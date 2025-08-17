@@ -20,7 +20,9 @@ html{
     opacity: 1;
     transform: translateY(0);
 }
-
+body{
+    overflow-x:hidden;
+}
 @keyframes toTop{
     from{
         opacity: 0;
