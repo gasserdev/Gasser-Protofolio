@@ -1,3 +1,2 @@
 # Gasser-Protofolio
-## Portfolio Website  
 This is my personal portfolio built with HTML, CSS, JavaScript, and Bootstrap to showcase my skills and projects.
