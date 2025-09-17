@@ -1,0 +1,30 @@
+[
+    {
+        "title":"Ecommerce-landing-Site",
+        "description":"This project is a simple E-commerce landing page .",
+        "image":"/public/assets/images/eco.PNG",
+        "github":"https://github.com/gasserdev/Ecommerce-landing-Site",
+        "url":"https://ecommerce-landing-site.vercel.app/"
+    },
+    {
+        "title":"GitSearch",
+        "description":"A simple web app that allows users to search GitHub usernames.",
+        "image":"/public/assets/images/gitsearch.PNG",
+        "github":"https://github.com/gasserdev/GitSearch",
+        "url":"https://gitsearch-f.vercel.app/"
+    },
+    {
+        "title":"OpenCartDB",
+        "description":"Simple Ecommerce Mock API (Read Only) <br> <br>",
+        "image":"/public/assets/images/opencart.PNG",
+        "github":"https://github.com/gasserdev/OpenCartDB",
+        "url":"https://open-cart-db.vercel.app/"
+    },
+    {
+        "title":"TO DO list",
+        "description":"Simple To-do-list HTML CSS JS (first to-do) <br> <br> ",
+        "image":"/public/assets/images/todo.PNG",
+        "github":"https://github.com/gasserdev/TO-DO-LIST",
+        "url":"https://the-first-to-do.vercel.app/"
+    }
+]

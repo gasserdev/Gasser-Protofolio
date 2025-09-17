@@ -1,0 +1,73 @@
+:root {
+    --primary-color: #13a4ec;
+    --secondary-color: #e7eff3;
+    --text-secondary: #4c809a;
+}
+*{
+    font-family: 'Space Grotesk', 'Noto Sans', sans-serif;
+    scroll-behavior: smooth !important;
+}
+.navbar-toggler-icon ,.navbar-toggler:hover{
+    border: none;
+    outline: none;
+}
+.navbar-toggler-icon ,.navbar-toggler{
+    border: none;
+    outline: none;
+}
+#hero{
+    height:91vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.7) 100%), url("/assets/images/bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+.btn-primary{
+    background-color: var(--primary-color);
+    border: none;
+    transition: 0.3s;
+}
+.btn-primary:hover{
+    background-color: #1395d6;
+    transition: 0.3s;
+}
+.btn{
+    transition: 0.3s;
+}
+
+#about{
+    height: 40vh !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#about p ,#projects .card .card-body p{
+    color:var(--text-secondary) !important;
+}
+.card{
+    width:18rem;
+    height: 320px;
+}
+.progress-bar{
+    background-color: var(--primary-color);
+}
+.progress{
+    background-color: rgb(229, 231, 231);
+}
+header{
+    position:sticky;
+    top:0;
+    right:0;
+    z-index: 5;
+}
+@media screen and (max-width:768px) {
+    ul{
+        width:100% !important;
+    }
+    #about{
+        height: 75vh !important;
+    }
+}
+
