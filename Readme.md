@@ -36,4 +36,4 @@ It showcases my projects, skills, and allows visitors to contact me directly via
 1. Clone this repository:
 
 ```bash
-git clone https://github.com/yourusername/portfolio.git
+git clone https://github.com/gasserdev/Gasser-Protofolio.git
