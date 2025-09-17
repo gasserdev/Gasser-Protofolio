@@ -5,7 +5,7 @@ import '../CSS/style.css';
 import axios from 'axios';
 import '@google/model-viewer';
 
-axios.get("/public/assets/projects.json")
+axios.get("https://gasserzayed.vercel.app/assets/projects.json")
 .then((projects)=>{
     for(let project of projects.data){
         document.getElementById("cards").innerHTML += `
