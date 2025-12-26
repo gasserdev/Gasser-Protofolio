@@ -3,9 +3,8 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import '../CSS/style.css';
 import axios from 'axios';
-import '@google/model-viewer';
 
-axios.get("/public/assets/projects.json")
+axios.get("https://gasserzayed.vercel.app/public/assets/projects.json")
 .then((projects)=>{
     for(let project of projects.data){
         document.getElementById("cards").innerHTML += `
