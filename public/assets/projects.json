@@ -2,29 +2,29 @@
     {
         "title":"Ecommerce-landing-Site",
         "description":"This project is a simple E-commerce landing page .",
-        "image":"https://gasserzayed.vercel.app/assets/images/eco.PNG",
+        "image":"/public/assets/images/eco.PNG",
         "github":"https://github.com/gasserdev/Ecommerce-landing-Site",
         "url":"https://ecommerce-landing-site.vercel.app/"
     },
     {
         "title":"GitSearch",
         "description":"A simple web app that allows users to search GitHub usernames.",
-        "image":"https://gasserzayed.vercel.app/assets/images/gitsearch.PNG",
+        "image":"/public/assets/images/gitsearch.PNG",
         "github":"https://github.com/gasserdev/GitSearch",
         "url":"https://gitsearch-f.vercel.app/"
     },
     {
-        "title":"OpenCartDB",
-        "description":"Simple Ecommerce Mock API (Read Only) <br> <br>",
-        "image":"https://gasserzayed.vercel.app/assets/images/opencart.PNG",
-        "github":"https://github.com/gasserdev/OpenCartDB",
-        "url":"https://open-cart-db.vercel.app/"
+        "title":"CDN-API",
+        "description":"A simple serverless API that converts GitHub file URLs into jsDelivr CDN links.",
+        "image":"/public/assets/images/cdn.PNG",
+        "github":"https://github.com/gasserdev/CDN-API",
+        "url":"https://cdn-api-dev.vercel.app/"
     },
     {
-        "title":"TO DO list",
-        "description":"Simple To-do-list HTML CSS JS (first to-do) <br> <br> ",
-        "image":"https://gasserzayed.vercel.app/assets/images/todo.PNG",
-        "github":"https://github.com/gasserdev/TO-DO-LIST",
-        "url":"https://the-first-to-do.vercel.app/"
+        "title":"Gitlyze",
+        "description":"Find any GitHub user and explore their profile, followers, and repositories easily  ",
+        "image":"/public/assets/images/gitlyze.PNG",
+        "github":"https://github.com/gasserdev/Gitlyze",
+        "url":"https://gitlyze.vercel.app/"
     }
 ]

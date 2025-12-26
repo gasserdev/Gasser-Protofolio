@@ -5,13 +5,13 @@ import '../CSS/style.css';
 import axios from 'axios';
 import '@google/model-viewer';
 
-axios.get("https://gasserzayed.vercel.app/assets/projects.json")
+axios.get("/public/assets/projects.json")
 .then((projects)=>{
     for(let project of projects.data){
         document.getElementById("cards").innerHTML += `
             <div class="d-flex flex-wrap gap-2 justify-content-center mb-lg-2 col-12 col-md-5 mb-5 col-lg-3 align-items-center">
-                <div class="card" >
-                <img src="${project.image}" alt="t">
+                <div class="card " >
+                <img src="${project.image}" class="card-img-top" alt="t">
                 <div class="card-body">
                     <h5 class="card-title fw-bold">${project.title}</h5>
                     <p class="card-text">${project.description}</p>
