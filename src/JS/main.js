@@ -4,7 +4,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import '../CSS/style.css';
 import axios from 'axios';
 
-axios.get("https://gasserzayed.vercel.app/public/assets/projects.json")
+axios.get("https://gasserzayed.vercel.app/assets/projects.json")
 .then((projects)=>{
     for(let project of projects.data){
         document.getElementById("cards").innerHTML += `
