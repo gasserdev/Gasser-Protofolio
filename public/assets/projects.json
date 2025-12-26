@@ -2,28 +2,28 @@
     {
         "title":"Ecommerce-landing-Site",
         "description":"This project is a simple E-commerce landing page .",
-        "image":"https://gasserzayed.vercel.app//assets/images/eco.PNG",
+        "image":"https://gasserzayed.vercel.app/assets/images/eco.PNG",
         "github":"https://github.com/gasserdev/Ecommerce-landing-Site",
         "url":"https://ecommerce-landing-site.vercel.app/"
     },
     {
         "title":"GitSearch",
         "description":"A simple web app that allows users to search GitHub usernames.",
-        "image":"https://gasserzayed.vercel.app//assets/images/gitsearch.PNG",
+        "image":"https://gasserzayed.vercel.app/assets/images/gitsearch.PNG",
         "github":"https://github.com/gasserdev/GitSearch",
         "url":"https://gitsearch-f.vercel.app/"
     },
     {
         "title":"CDN-API",
         "description":"A simple serverless API that converts GitHub file URLs into jsDelivr CDN links.",
-        "image":"https://gasserzayed.vercel.app//assets/images/cdn.PNG",
+        "image":"https://gasserzayed.vercel.app/assets/images/cdn.PNG",
         "github":"https://github.com/gasserdev/CDN-API",
         "url":"https://cdn-api-dev.vercel.app/"
     },
     {
         "title":"Gitlyze",
         "description":"Find any GitHub user and explore their profile, followers, and repositories easily  ",
-        "image":"https://gasserzayed.vercel.app//assets/images/gitlyze.PNG",
+        "image":"https://gasserzayed.vercel.app/assets/images/gitlyze.PNG",
         "github":"https://github.com/gasserdev/Gitlyze",
         "url":"https://gitlyze.vercel.app/"
     }
