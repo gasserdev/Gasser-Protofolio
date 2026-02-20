@@ -23,6 +23,7 @@
     "vite-plugin-solid": "^2.11.8"
   },
   "dependencies": {
+    "material-icons": "^1.13.14",
     "solid-js": "^1.9.9"
   }
 }
