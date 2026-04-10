@@ -1,0 +1,72 @@
+---
+const { username = "gasserdev" } = Astro.props;
+---
+
+<section id="contact" class="py-24 px-6 max-w-7xl mx-auto">
+    <div class="mb-12 text-left">
+        <h2 class="font-['Space_Grotesk'] text-4xl font-bold text-white tracking-tighter italic">
+            Transmission_Channels
+        </h2>
+        <div class="h-1 w-20 bg-cyan-400 mt-2"></div>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        
+        <div x-data="{ copied: false, email: 'gasserzayed.work0@gmail.com' }" 
+             class="col-span-2 md:col-span-2 bg-[#0c1326] p-8 rounded-2xl border border-white/5 flex flex-col justify-between group relative overflow-hidden min-h-[200px]">
+            <div class="relative z-10">
+                <span class="text-cyan-400 font-bold tracking-[0.3em] text-[10px] uppercase mb-2 block">Direct Line</span>
+                <h3 class="text-2xl font-bold text-white font-['Space_Grotesk'] break-all" x-text="email"></h3>
+            </div>
+            <button @click="navigator.clipboard.writeText(email); copied = true; setTimeout(() => copied = false, 2000)"
+                    class="relative z-10 mt-6 w-fit flex items-center gap-3 px-5 py-2.5 bg-cyan-400/5 hover:bg-cyan-400 hover:text-[#070d1f] rounded-lg transition-all duration-300 font-bold text-xs border border-cyan-400/20">
+                <span class="material-symbols-outlined text-lg" x-text="copied ? 'done_all' : 'content_copy'">content_copy</span>
+                <span x-text="copied ? 'COPIED!' : 'COPY EMAIL'"></span>
+            </button>
+            <span class="absolute -right-4 -bottom-4 material-symbols-outlined text-[120px] opacity-[0.03] group-hover:opacity-[0.07] transition-all duration-700 rotate-12">alternate_email</span>
+        </div>
+
+        <a href={`https://youtube.com/@${username}`} target="_blank" 
+           class="bg-[#11192e] p-6 rounded-2xl border border-white/5 hover:border-red-600/40 transition-all group flex flex-col items-center justify-center text-center">
+            <span class="material-symbols-outlined text-4xl text-slate-500 group-hover:text-red-600 mb-3 transition-all group-hover:scale-110">smart_display</span>
+            <span class="text-[10px] font-black text-slate-500 tracking-[0.2em] uppercase">YouTube</span>
+            <span class="text-[9px] mt-1 text-slate-600 group-hover:text-red-500/80 font-mono italic">@{username}</span>
+        </a>
+
+        <a href={`https://github.com/${username}`} target="_blank" 
+           class="bg-[#11192e] p-6 rounded-2xl border border-white/5 hover:border-cyan-400/40 transition-all group flex flex-col items-center justify-center text-center">
+            <span class="material-symbols-outlined text-4xl text-slate-500 group-hover:text-cyan-400 mb-3 transition-all group-hover:scale-110">terminal</span>
+            <span class="text-[10px] font-black text-slate-500 tracking-[0.2em] uppercase">GitHub</span>
+            <span class="text-[9px] mt-1 text-slate-600 group-hover:text-cyan-400/80 font-mono italic">/{username}</span>
+        </a>
+
+        <a href={`https://linkedin.com/in/${username}`} target="_blank" 
+           class="bg-[#11192e] p-6 rounded-2xl border border-white/5 hover:border-blue-500/40 transition-all group flex flex-col items-center justify-center text-center">
+            <span class="material-symbols-outlined text-4xl text-slate-500 group-hover:text-blue-500 mb-3 transition-all group-hover:scale-110">share</span>
+            <span class="text-[10px] font-black text-slate-500 tracking-[0.2em] uppercase">LinkedIn</span>
+            <span class="text-[9px] mt-1 text-slate-600 group-hover:text-blue-500/80 font-mono italic">in/{username}</span>
+        </a>
+
+        <a href={`https://facebook.com/${username}`} target="_blank" 
+           class="bg-[#11192e] p-6 rounded-2xl border border-white/5 hover:border-blue-600/40 transition-all group flex flex-col items-center justify-center text-center">
+            <span class="material-symbols-outlined text-4xl text-slate-500 group-hover:text-blue-600 mb-3 transition-all group-hover:scale-110">public</span>
+            <span class="text-[10px] font-black text-slate-500 tracking-[0.2em] uppercase">Facebook</span>
+            <span class="text-[9px] mt-1 text-slate-600 group-hover:text-blue-600/80 font-mono italic">fb/{username}</span>
+        </a>
+
+        <div class="col-span-2 bg-[#0c1326] p-6 rounded-3xl border border-white/5 flex items-center justify-between group overflow-hidden relative">
+            <div class="relative z-10">
+                <div class="flex items-center gap-2 mb-1">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                    </span>
+                    <span class="text-[10px] font-black text-slate-500 tracking-[0.2em] uppercase">Status</span>
+                </div>
+                <h4 class="text-white font-bold text-sm">Available for work</h4>
+            </div>
+            <span class="absolute right-4 bottom-0 font-mono text-[40px] text-white/[0.02] pointer-events-none">{`200_OK`}</span>
+        </div>
+
+    </div>
+</section>

@@ -1,23 +1,125 @@
+---
+import '../styles/global.css';
+
+const { title, description, image, url } = Astro.props;
+
+const siteUrl = 'https://gasserzayed.vercel.app';
+const defaultTitle = 'Gasser Zayed | Frontend Developer';
+const defaultDescription = 'Junior Frontend Developer & CS Student. Building fast, modern web apps with Astro, Tailwind, and more. View my projects and get in touch.';
+const defaultImage = `${siteUrl}/og-image.png`;
+
+const metaTitle = title || defaultTitle;
+const metaDescription = description || defaultDescription;
+const metaImage = image || defaultImage;
+const metaUrl = url || siteUrl;
+
+const projects = [
+  { 
+    title: "Gitlyze Engine", 
+    desc: "A high-performance GitHub explorer built with Astro, Axios, and Tailwind CSS.",
+    url: "https://gitlyze.vercel.app/"
+  },
+  { 
+    title: "Ecommerce landing Site", 
+    desc: "A simple E-commerce landing page.",
+    url: "https://ecommerce-landing-site.vercel.app"
+  },
+  { 
+    title: "CDN-API", 
+    desc: "A serverless API that converts GitHub file URLs into jsDelivr CDN links.",
+    url: "https://cdn-api-dev.vercel.app"
+  }
+];
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Gasser Zayed",
+  "alternateName": "جاسر زايد",
+  "jobTitle": "Frontend Developer",
+  "description": "Junior Frontend Developer & CS Student specializing in modern web development",
+  "url": siteUrl,
+  "sameAs": [
+    "https://github.com/gasserdev",
+    "https://linkedin.com/in/gasserdev",
+    "https://youtube.com/@gasserdev"
+  ],
+  "knowsAbout": ["JavaScript", "Astro", "Tailwind CSS", "SolidJS", "Alpine.js", "React", "Frontend Development"],
+  "email": "gasserzayed.work0@gmail.com"
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Gasser Zayed Portfolio",
+  "url": siteUrl,
+  "description": metaDescription,
+  "author": {
+    "@type": "Person",
+    "name": "Gasser Zayed"
+  },
+  "potentialAction": {
+    "@type": "ContactAction",
+    "target": "mailto:gasserzayed.work0@gmail.com"
+  }
+};
+---
+
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		
+		<link rel="canonical" href={metaUrl} />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
+		
+		<title>{metaTitle}</title>
+		<meta name="description" content={metaDescription} />
+		<meta name="author" content="Gasser Zayed" />
+		<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+		<meta name="googlebot" content="index, follow" />
+		<meta name="keywords" content="Frontend Developer, Web Developer, JavaScript, Astro, Tailwind CSS, React, Portfolio, Gasser Zayed, جاسر زايد" />
+		<meta name="theme-color" content="#070d1f" />
+		
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={metaUrl} />
+		<meta property="og:title" content={metaTitle} />
+		<meta property="og:description" content={metaDescription} />
+		<meta property="og:image" content={metaImage} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" content="Gasser Zayed - Frontend Developer Portfolio" />
+		<meta property="og:site_name" content="Gasser Zayed Portfolio" />
+		<meta property="og:locale" content="en_US" />
+		<meta property="og:locale:alternate" content="ar" />
+		
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:site" content="@gasserdev" />
+		<meta name="twitter:creator" content="@gasserdev" />
+		<meta name="twitter:url" content={metaUrl} />
+		<meta name="twitter:title" content={metaTitle} />
+		<meta name="twitter:description" content={metaDescription} />
+		<meta name="twitter:image" content={metaImage} />
+		<meta name="twitter:image:alt" content="Gasser Zayed Portfolio" />
+		
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="apple-mobile-web-app-title" content="Gasser Zayed" />
+		
+		<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&family=Inter:wght@400;700&display=swap" rel="stylesheet"/>
+		<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+		
+		<script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+		<script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
 	</head>
-	<body>
+	<body class="bg-[#070d1f] text-[#dfe4fe] font-['Inter'] selection:bg-cyan-400/30">
+		<slot name="head" />
 		<slot />
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>

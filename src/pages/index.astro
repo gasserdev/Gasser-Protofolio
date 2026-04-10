@@ -1,11 +1,127 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import Contact from '../components/Contact.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const skills = ["Vite", "JavaScript", "Axios", "SolidJS", "Astro", "Tailwind", "Alpine.js", "Bootstrap"];
+
+const projects = [
+  { 
+    title: "Gitlyze Engine", 
+    desc: "A high-performance GitHub explorer built with Astro, Axios, and Tailwind CSS. Optimized for speed and deep searching.", 
+    github: "https://github.com/gasserdev/Gitlyze", 
+    demo: "https://gitlyze.vercel.app/" 
+  },
+  { 
+    title: "Ecommerce landing Site", 
+    desc: "This project is a simple E-commerce landing page .", 
+    github: "https://github.com/gasserdev/Ecommerce-landing-Site", 
+    demo: "https://ecommerce-landing-site.vercel.app" 
+  },
+  { 
+    title: "CDN-API", 
+    desc: "A simple serverless API that converts GitHub file URLs into jsDelivr CDN links.", 
+    github: "https://github.com/gasserdev/CDN-API", 
+    demo: "https://cdn-api-dev.vercel.app" 
+  }
+];
+
+const projectSchemas = projects.map(p => ({
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": p.title,
+  "description": p.desc,
+  "url": p.demo,
+  "author": {
+    "@type": "Person",
+    "name": "Gasser Zayed",
+    "url": "https://gasserzayed.vercel.app"
+  },
+  "codeRepository": p.github,
+  "programmingLanguage": ["JavaScript", "Astro", "Tailwind CSS"]
+}));
+
+const portfolioSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Gasser Zayed's Projects",
+  "description": "Portfolio of web development projects by Gasser Zayed",
+  "url": "https://gasserzayed.vercel.app/#work",
+  "numberOfItems": projects.length,
+  "itemListElement": projects.map((p, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "url": p.demo
+  }))
+};
 ---
 
-<Layout>
-	<Welcome />
+<Layout 
+  title="Gasser Zayed | Frontend Developer & CS Student"
+  description="Junior Frontend Developer showcasing web development projects. Built with Astro, Tailwind CSS, and modern JavaScript. View Gitlyze Engine, E-commerce projects, and more."
+>
+	{projectSchemas.map(schema => (
+    <script type="application/ld+json" slot="head" set:html={JSON.stringify(schema)} />
+  ))}
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(portfolioSchema)} />
+	
+	<Navbar />
+	
+	<main class="overflow-x-hidden">
+		<section class="relative min-h-screen flex flex-col items-center justify-center pt-20">
+			<div class="absolute inset-0 grid-pattern opacity-30 -z-10"></div>
+			<div class="relative z-10 text-center px-6">
+				<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-400/5 border border-cyan-400/20 mb-8">
+					<span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+					<span class="text-cyan-400 font-bold text-[10px] uppercase tracking-[0.2em]">Ready for Deployment</span>
+				</div>
+				<h1 class="font-['Space_Grotesk'] text-6xl md:text-9xl font-extrabold tracking-tighter mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/40">
+					Code or Die?
+				</h1>
+				<p class="text-cyan-400 font-bold tracking-[0.3em] uppercase text-xs md:text-sm mb-12">
+					Junior Frontend Developer & CS Student
+				</p>
+				<div class="flex gap-4 justify-center">
+					<a href="#work" class="px-8 py-4 bg-cyan-400 text-[#070d1f] font-bold rounded-lg hover:bg-cyan-300 transition-all hover:scale-105">VIEW_PROJECTS</a>
+				</div>
+			</div>
+		</section>
+
+		<section id="skills" class="py-12 px-6 max-w-5xl mx-auto border-y border-white/5 bg-[#0c1326]/30">
+			<div class="flex flex-wrap gap-3 justify-center">
+				{skills.map(skill => (
+					<span class="px-5 py-2.5 bg-[#11192e] border border-white/5 rounded-full text-slate-400 font-medium text-xs hover:text-cyan-400 hover:border-cyan-400/30 transition-all cursor-default">
+						{skill}
+					</span>
+				))}
+			</div>
+		</section>
+
+		<section id="work" class="py-32 px-6 max-w-7xl mx-auto">
+			<div class="mb-16">
+				<h2 class="font-['Space_Grotesk'] text-4xl font-bold text-white tracking-tighter italic">
+					Projects<span class="text-cyan-400">.deployed ( )</span>
+				</h2>
+				<div class="h-1 w-20 bg-cyan-400 mt-2"></div>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+				{projects.map(p => (
+					<ProjectCard title={p.title} desc={p.desc} github={p.github} demo={p.demo} />
+				))}
+			</div>
+		</section>
+
+		<section>
+			<Contact usernaem="gasserdev"/>
+		</section>
+
+	</main>
+
+	<footer class="py-12 border-t border-white/5 text-center">
+		<p class="text-slate-600 text-[10px] tracking-[0.3em] uppercase">
+			© 2026 Gasser Zayed. Built with Astro & Alpine.js
+		</p>
+	</footer>
 </Layout>
