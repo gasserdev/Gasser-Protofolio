@@ -15,7 +15,7 @@ const projects = [
   },
   { 
     title: "Ecommerce landing Site", 
-    desc: "This project is a simple E-commerce landing page .", 
+    desc: "This project is a simple E-commerce landing page.", 
     github: "https://github.com/gasserdev/Ecommerce-landing-Site", 
     demo: "https://ecommerce-landing-site.vercel.app" 
   },
@@ -26,100 +26,73 @@ const projects = [
     demo: "https://cdn-api-dev.vercel.app" 
   }
 ];
-
-const projectSchemas = projects.map(p => ({
-  "@context": "https://schema.org",
-  "@type": "CreativeWork",
-  "name": p.title,
-  "description": p.desc,
-  "url": p.demo,
-  "author": {
-    "@type": "Person",
-    "name": "Gasser Zayed",
-    "url": "https://gasserzayed.vercel.app"
-  },
-  "codeRepository": p.github,
-  "programmingLanguage": ["JavaScript", "Astro", "Tailwind CSS"]
-}));
-
-const portfolioSchema = {
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "Gasser Zayed's Projects",
-  "description": "Portfolio of web development projects by Gasser Zayed",
-  "url": "https://gasserzayed.vercel.app/#work",
-  "numberOfItems": projects.length,
-  "itemListElement": projects.map((p, index) => ({
-    "@type": "ListItem",
-    "position": index + 1,
-    "url": p.demo
-  }))
-};
 ---
 
 <Layout 
   title="Gasser Zayed | Frontend Developer & CS Student"
-  description="Junior Frontend Developer showcasing web development projects. Built with Astro, Tailwind CSS, and modern JavaScript. View Gitlyze Engine, E-commerce projects, and more."
+  description="Junior Frontend Developer showcasing web development projects. Built with Astro, Tailwind CSS, and modern JavaScript."
 >
-	{projectSchemas.map(schema => (
-    <script type="application/ld+json" slot="head" set:html={JSON.stringify(schema)} />
-  ))}
-  <script type="application/ld+json" slot="head" set:html={JSON.stringify(portfolioSchema)} />
-	
 	<Navbar />
 	
-	<main class="overflow-x-hidden">
-		<section class="relative min-h-screen flex flex-col items-center justify-center pt-20">
-			<div class="absolute inset-0 grid-pattern opacity-30 -z-10"></div>
+	<main id="main-content">
+		<section class="relative min-h-screen flex flex-col items-center justify-center pt-20" aria-labelledby="hero-heading">
+			<div class="absolute inset-0 grid-pattern opacity-30 -z-10" aria-hidden="true"></div>
 			<div class="relative z-10 text-center px-6">
-				<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-400/5 border border-cyan-400/20 mb-8">
-					<span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+				<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-400/5 border border-cyan-400/20 mb-8" role="status" aria-label="Status">
+					<span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" aria-hidden="true"></span>
 					<span class="text-cyan-400 font-bold text-[10px] uppercase tracking-[0.2em]">Ready for Deployment</span>
 				</div>
-				<h1 class="font-['Space_Grotesk'] text-6xl md:text-9xl font-extrabold tracking-tighter mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/40">
+				<h1 id="hero-heading" class="font-['Nunito'] text-6xl md:text-9xl font-extrabold tracking-tighter mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/40">
 					Code or Die?
 				</h1>
 				<p class="text-cyan-400 font-bold tracking-[0.3em] uppercase text-xs md:text-sm mb-12">
 					Junior Frontend Developer & CS Student
 				</p>
 				<div class="flex gap-4 justify-center">
-					<a href="#work" class="px-8 py-4 bg-cyan-400 text-[#070d1f] font-bold rounded-lg hover:bg-cyan-300 transition-all hover:scale-105">VIEW_PROJECTS</a>
+					<a href="#work" class="px-8 py-4 bg-cyan-400 text-[#070d1f] font-bold rounded-lg hover:bg-cyan-300 transition-all hover:scale-105 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-[#070d1f]">
+						VIEW_PROJECTS
+					</a>
 				</div>
 			</div>
 		</section>
 
-		<section id="skills" class="py-12 px-6 max-w-5xl mx-auto border-y border-white/5 bg-[#0c1326]/30">
-			<div class="flex flex-wrap gap-3 justify-center">
+		<section id="skills" class="py-12 px-4 sm:px-6 max-w-5xl mx-auto border-y border-white/5 bg-[#0c1326]/30" aria-labelledby="skills-heading">
+			<h2 id="skills-heading" class="sr-only">Skills</h2>
+			<ul class="flex flex-wrap gap-2 sm:gap-3 justify-center list-none m-0 p-0" role="list" aria-label="Technology skills">
 				{skills.map(skill => (
-					<span class="px-5 py-2.5 bg-[#11192e] border border-white/5 rounded-full text-slate-400 font-medium text-xs hover:text-cyan-400 hover:border-cyan-400/30 transition-all cursor-default">
-						{skill}
-					</span>
+					<li class="m-0">
+						<span class="block px-4 sm:px-5 py-2.5 bg-[#11192e] border border-white/5 rounded-full text-slate-400 font-medium text-xs hover:text-cyan-400 hover:border-cyan-400/30 transition-all cursor-default">
+							{skill}
+						</span>
+					</li>
 				))}
-			</div>
+			</ul>
 		</section>
 
-		<section id="work" class="py-32 px-6 max-w-7xl mx-auto">
+		<section id="work" class="py-32 px-6 max-w-7xl mx-auto" aria-labelledby="work-heading">
 			<div class="mb-16">
-				<h2 class="font-['Space_Grotesk'] text-4xl font-bold text-white tracking-tighter italic">
+				<h2 id="work-heading" class="font-['Nunito'] text-4xl font-bold text-white tracking-tighter italic">
 					Projects<span class="text-cyan-400">.deployed ( )</span>
 				</h2>
-				<div class="h-1 w-20 bg-cyan-400 mt-2"></div>
+				<div class="h-1 w-20 bg-cyan-400 mt-2" aria-hidden="true"></div>
 			</div>
 
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+			<ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 items-stretch list-none m-0 p-0" role="list" aria-label="Portfolio projects">
 				{projects.map(p => (
-					<ProjectCard title={p.title} desc={p.desc} github={p.github} demo={p.demo} />
+					<li>
+						<ProjectCard title={p.title} desc={p.desc} github={p.github} demo={p.demo} />
+					</li>
 				))}
-			</div>
+			</ul>
 		</section>
 
-		<section>
-			<Contact usernaem="gasserdev"/>
+		<section aria-labelledby="contact-heading">
+			<Contact usernaem="gasserdev" />
 		</section>
 
 	</main>
 
-	<footer class="py-12 border-t border-white/5 text-center">
+	<footer class="py-12 border-t border-white/5 text-center" role="contentinfo">
 		<p class="text-slate-600 text-[10px] tracking-[0.3em] uppercase">
 			© 2026 Gasser Zayed. Built with Astro & Alpine.js
 		</p>

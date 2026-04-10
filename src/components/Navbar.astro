@@ -1,24 +1,49 @@
+---
+import Icon from './Icon.astro';
+---
+
 <nav x-data="{ open: false, atTop: true }" 
      @scroll.window="atTop = window.pageYOffset > 20 ? false : true"
      class="fixed top-0 w-full z-50 transition-all duration-300 py-4 px-6"
      :class="atTop && !open ? 'bg-transparent' : 'bg-[#070d1f] shadow-lg'"
-     :style="!atTop || open ? 'background: #070d1f;' : ''">
+     :style="!atTop || open ? 'background: #070d1f;' : ''"
+     role="navigation"
+     aria-label="Main navigation">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
-        <div class="font-bold text-cyan-400 text-2xl font-['Space_Grotesk'] tracking-tighter">Gasser Zayed</div>
+        <a href="#" class="font-bold text-cyan-400 text-2xl font-['Nunito'] tracking-tighter focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-[#070d1f] rounded" aria-label="Gasser Zayed - Back to top">
+            Gasser Zayed
+        </a>
         
-        <div class="hidden md:flex gap-8 text-sm font-bold tracking-tight">
-            <a href="#work" class="hover:text-cyan-400 transition">WORK</a>
-            <a href="#skills" class="hover:text-cyan-400 transition">SKILLS</a>
-            <a href="#contact" class="hover:text-cyan-400 transition">CONTACT</a>
-        </div>
+        <ul class="hidden md:flex gap-8 text-sm font-bold tracking-tight list-none m-0 p-0" role="list">
+            <li>
+                <a href="#work" class="hover:text-cyan-400 transition focus:outline-none focus:text-cyan-400 focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-[#070d1f] rounded px-2 py-1">
+                    WORK
+                </a>
+            </li>
+            <li>
+                <a href="#skills" class="hover:text-cyan-400 transition focus:outline-none focus:text-cyan-400 focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-[#070d1f] rounded px-2 py-1">
+                    SKILLS
+                </a>
+            </li>
+            <li>
+                <a href="#contact" class="hover:text-cyan-400 transition focus:outline-none focus:text-cyan-400 focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-[#070d1f] rounded px-2 py-1">
+                    CONTACT
+                </a>
+            </li>
+        </ul>
 
-        <button @click="open = !open" class="md:hidden text-cyan-400 p-2" aria-label="Toggle menu">
-            <span x-show="!open" class="material-symbols-outlined text-3xl">menu</span>
-            <span x-show="open" class="material-symbols-outlined text-3xl">close</span>
+        <button @click="open = !open" 
+                class="md:hidden text-cyan-400 p-2 rounded focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-[#070d1f]"
+                :aria-expanded="open"
+                aria-controls="mobile-menu"
+                aria-label="Toggle navigation menu">
+            <span x-show="!open" aria-hidden="true"><Icon name="menu" className="w-7 h-7" /></span>
+            <span x-show="open" aria-hidden="true"><Icon name="close" className="w-7 h-7" /></span>
         </button>
     </div>
 
-    <div x-show="open" 
+    <div id="mobile-menu"
+         x-show="open" 
          x-transition:enter="transition ease-out duration-300"
          x-transition:enter-start="opacity-0 translate-x-full"
          x-transition:enter-end="opacity-100 translate-x-0"
@@ -26,49 +51,74 @@
          x-transition:leave-start="opacity-100 translate-x-0"
          x-transition:leave-end="opacity-0 translate-x-full"
          @click.outside="open = false"
-         class="fixed top-0 right-0 h-full w-72 bg-[#070d1f] border-l border-white/10 md:hidden z-50 shadow-[-8px_0_30px_rgba(0,0,0,0.5)]">
+         @keydown.escape.window="open = false"
+         class="fixed top-0 right-0 h-full w-72 bg-[#070d1f] border-l border-white/10 md:hidden z-50 shadow-[-8px_0_30px_rgba(0,0,0,0.5)]"
+         role="dialog"
+         aria-modal="true"
+         aria-label="Navigation menu">
         
         <div class="p-6">
             <div class="flex justify-between items-center mb-12">
-                <span class="font-bold text-cyan-400 text-xl font-['Space_Grotesk']">Menu</span>
-                <button @click="open = false" class="text-slate-400 hover:text-cyan-400">
-                    <span class="material-symbols-outlined text-2xl">close</span>
+                <span class="font-bold text-cyan-400 text-xl font-['Nunito']">Menu</span>
+                <button @click="open = false" 
+                        class="text-slate-400 hover:text-cyan-400 rounded focus:outline-none focus:ring-2 focus:ring-cyan-400 p-1"
+                        aria-label="Close menu">
+                    <Icon name="close" className="w-6 h-6" />
                 </button>
             </div>
             
-            <div class="flex flex-col gap-6">
-                <a href="#work" @click="open = false" 
-                   class="flex items-center gap-4 text-lg font-bold text-slate-300 hover:text-cyan-400 transition group">
-                    <span class="material-symbols-outlined text-2xl group-hover:scale-110 transition-transform">work</span>
-                    WORK
-                </a>
-                <a href="#skills" @click="open = false" 
-                   class="flex items-center gap-4 text-lg font-bold text-slate-300 hover:text-cyan-400 transition group">
-                    <span class="material-symbols-outlined text-2xl group-hover:scale-110 transition-transform">code</span>
-                    SKILLS
-                </a>
-                <a href="#contact" @click="open = false" 
-                   class="flex items-center gap-4 text-lg font-bold text-slate-300 hover:text-cyan-400 transition group">
-                    <span class="material-symbols-outlined text-2xl group-hover:scale-110 transition-transform">mail</span>
-                    CONTACT
-                </a>
-            </div>
+            <ul class="flex flex-col gap-6 list-none m-0 p-0" role="list">
+                <li>
+                    <a href="#work" @click="open = false" 
+                       class="flex items-center gap-4 text-lg font-bold text-slate-300 hover:text-cyan-400 transition group rounded px-2 py-1 focus:outline-none focus:text-cyan-400 focus:bg-white/5">
+                        <span class="group-hover:scale-110 transition-transform" aria-hidden="true"><Icon name="work" className="w-6 h-6" /></span>
+                        WORK
+                    </a>
+                </li>
+                <li>
+                    <a href="#skills" @click="open = false" 
+                       class="flex items-center gap-4 text-lg font-bold text-slate-300 hover:text-cyan-400 transition group rounded px-2 py-1 focus:outline-none focus:text-cyan-400 focus:bg-white/5">
+                        <span class="group-hover:scale-110 transition-transform" aria-hidden="true"><Icon name="code" className="w-6 h-6" /></span>
+                        SKILLS
+                    </a>
+                </li>
+                <li>
+                    <a href="#contact" @click="open = false" 
+                       class="flex items-center gap-4 text-lg font-bold text-slate-300 hover:text-cyan-400 transition group rounded px-2 py-1 focus:outline-none focus:text-cyan-400 focus:bg-white/5">
+                        <span class="group-hover:scale-110 transition-transform" aria-hidden="true"><Icon name="mail" className="w-6 h-6" /></span>
+                        CONTACT
+                    </a>
+                </li>
+            </ul>
 
             <div class="absolute bottom-8 left-6 right-6">
+                <p class="text-xs text-slate-600 mb-3 uppercase tracking-wider">Connect</p>
                 <div class="flex gap-4">
-                    <a href="https://github.com/gasserdev" target="_blank" class="text-slate-500 hover:text-cyan-400 transition">
-                        <span class="material-symbols-outlined text-2xl">code</span>
+                    <a href="https://github.com/gasserdev" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="text-slate-500 hover:text-cyan-400 transition rounded p-1 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                       aria-label="GitHub Profile">
+                        <Icon name="code" className="w-6 h-6" />
                     </a>
-                    <a href="https://linkedin.com/in/gasserdev" target="_blank" class="text-slate-500 hover:text-blue-500 transition">
-                        <span class="material-symbols-outlined text-2xl">share</span>
+                    <a href="https://linkedin.com/in/gasserdev" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="text-slate-500 hover:text-blue-500 transition rounded p-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                       aria-label="LinkedIn Profile">
+                        <Icon name="share" className="w-6 h-6" />
                     </a>
-                    <a href="https://youtube.com/@gasserdev" target="_blank" class="text-slate-500 hover:text-red-500 transition">
-                        <span class="material-symbols-outlined text-2xl">smart_display</span>
+                    <a href="https://youtube.com/@gasserdev" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="text-slate-500 hover:text-red-500 transition rounded p-1 focus:outline-none focus:ring-2 focus:ring-red-500"
+                       aria-label="YouTube Channel">
+                        <Icon name="smart_display" className="w-6 h-6" />
                     </a>
                 </div>
             </div>
         </div>
     </div>
 
-    <div x-show="open" class="fixed inset-0 bg-black/50 md:hidden z-40" @click="open = false"></div>
+    <div x-show="open" class="fixed inset-0 bg-black/50 md:hidden z-40" @click="open = false" aria-hidden="true"></div>
 </nav>

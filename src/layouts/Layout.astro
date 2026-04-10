@@ -5,31 +5,13 @@ const { title, description, image, url } = Astro.props;
 
 const siteUrl = 'https://gasserzayed.vercel.app';
 const defaultTitle = 'Gasser Zayed | Frontend Developer';
-const defaultDescription = 'Junior Frontend Developer & CS Student. Building fast, modern web apps with Astro, Tailwind, and more. View my projects and get in touch.';
-const defaultImage = `${siteUrl}/og-image.png`;
+const defaultDescription = 'Junior Frontend Developer & CS Student. Building fast, modern web apps with Astro, Tailwind CSS, and Alpine.js. View my projects and get in touch.';
+const defaultImage = `${siteUrl}/og-image.svg`;
 
 const metaTitle = title || defaultTitle;
 const metaDescription = description || defaultDescription;
 const metaImage = image || defaultImage;
 const metaUrl = url || siteUrl;
-
-const projects = [
-  { 
-    title: "Gitlyze Engine", 
-    desc: "A high-performance GitHub explorer built with Astro, Axios, and Tailwind CSS.",
-    url: "https://gitlyze.vercel.app/"
-  },
-  { 
-    title: "Ecommerce landing Site", 
-    desc: "A simple E-commerce landing page.",
-    url: "https://ecommerce-landing-site.vercel.app"
-  },
-  { 
-    title: "CDN-API", 
-    desc: "A serverless API that converts GitHub file URLs into jsDelivr CDN links.",
-    url: "https://cdn-api-dev.vercel.app"
-  }
-];
 
 const personSchema = {
   "@context": "https://schema.org",
@@ -37,15 +19,21 @@ const personSchema = {
   "name": "Gasser Zayed",
   "alternateName": "جاسر زايد",
   "jobTitle": "Frontend Developer",
-  "description": "Junior Frontend Developer & CS Student specializing in modern web development",
+  "description": "Junior Frontend Developer & CS Student specializing in modern web development with JavaScript, Astro, and Tailwind CSS",
   "url": siteUrl,
+  "image": `${siteUrl}/og-image.svg`,
   "sameAs": [
     "https://github.com/gasserdev",
     "https://linkedin.com/in/gasserdev",
     "https://youtube.com/@gasserdev"
   ],
-  "knowsAbout": ["JavaScript", "Astro", "Tailwind CSS", "SolidJS", "Alpine.js", "React", "Frontend Development"],
-  "email": "gasserzayed.work0@gmail.com"
+  "knowsAbout": ["JavaScript", "Astro", "Tailwind CSS", "SolidJS", "Alpine.js", "Frontend Development", "Web Development"],
+  "email": "gasserzayed.work0@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Giza",
+    "addressCountry": "EG"
+  }
 };
 
 const websiteSchema = {
@@ -72,18 +60,17 @@ const websiteSchema = {
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		
-		<link rel="canonical" href={metaUrl} />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
-		<link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
-		
 		<title>{metaTitle}</title>
 		<meta name="description" content={metaDescription} />
+		<link rel="canonical" href={metaUrl} />
+		
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="author" content="Gasser Zayed" />
-		<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+		<meta name="robots" content="index, follow, max-image-preview:large" />
 		<meta name="googlebot" content="index, follow" />
-		<meta name="keywords" content="Frontend Developer, Web Developer, JavaScript, Astro, Tailwind CSS, React, Portfolio, Gasser Zayed, جاسر زايد" />
+		<meta name="keywords" content="Frontend Developer, Web Developer, JavaScript, Astro, Tailwind CSS, Portfolio, Gasser Zayed, CS Student, Egypt" />
 		<meta name="theme-color" content="#070d1f" />
+		<meta name="generator" content={Astro.generator} />
 		
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={metaUrl} />
@@ -92,10 +79,8 @@ const websiteSchema = {
 		<meta property="og:image" content={metaImage} />
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="630" />
-		<meta property="og:image:alt" content="Gasser Zayed - Frontend Developer Portfolio" />
 		<meta property="og:site_name" content="Gasser Zayed Portfolio" />
 		<meta property="og:locale" content="en_US" />
-		<meta property="og:locale:alternate" content="ar" />
 		
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:site" content="@gasserdev" />
@@ -104,22 +89,32 @@ const websiteSchema = {
 		<meta name="twitter:title" content={metaTitle} />
 		<meta name="twitter:description" content={metaDescription} />
 		<meta name="twitter:image" content={metaImage} />
-		<meta name="twitter:image:alt" content="Gasser Zayed Portfolio" />
 		
-		<meta name="format-detection" content="telephone=no" />
 		<meta name="mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 		<meta name="apple-mobile-web-app-title" content="Gasser Zayed" />
+		<meta name="application-name" content="Gasser Zayed Portfolio" />
 		
-		<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&family=Inter:wght@400;700&display=swap" rel="stylesheet"/>
-		<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link rel="preconnect" href="https://github.com" />
+		<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+		<link rel="dns-prefetch" href="https://github.com" />
+		<link rel="dns-prefetch" href="https://linkedin.com" />
+		<link rel="dns-prefetch" href="https://youtube.com" />
 		
-		<script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
-		<script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" media="print" onload="this.media='all'" />
+		<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" /></noscript>
+		
+		<script type="application/ld+json" set:html={JSON.stringify(personSchema)} is:inline></script>
+		<script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} is:inline></script>
 	</head>
-	<body class="bg-[#070d1f] text-[#dfe4fe] font-['Inter'] selection:bg-cyan-400/30">
-		<slot name="head" />
+	<body class="bg-[#070d1f] text-[#dfe4fe] selection:bg-cyan-400/30">
+		<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-cyan-400 focus:text-[#070d1f] focus:px-4 focus:py-2 focus:rounded-lg focus:font-bold">
+			Skip to main content
+		</a>
+		
 		<slot />
 	</body>
 </html>

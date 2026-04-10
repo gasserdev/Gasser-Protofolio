@@ -1,42 +1,39 @@
 ---
+import Icon from './Icon.astro';
 const { title, desc, github, demo } = Astro.props;
 ---
-<div class="group relative bg-[#0c1326] p-8 rounded-2xl border border-white/5 hover:border-cyan-400/40 transition-all duration-500  shadow-2xl overflow-hidden">
+<article class="group relative flex flex-col h-full bg-[#0c1326] p-8 rounded-2xl border border-white/5 hover:border-cyan-400/40 transition-all duration-500 shadow-2xl overflow-hidden">
     
-    <div class="absolute -inset-px bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm -z-10"></div>
+    <div class="absolute -inset-px bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm -z-10" aria-hidden="true"></div>
 
-    <div class="absolute top-4 right-4 opacity-10 group-hover:opacity-30 transition-opacity">
-        <span class="material-symbols-outlined text-4xl text-cyan-400">terminal</span>
+    <div class="absolute top-4 right-4 opacity-10 group-hover:opacity-30 transition-opacity" aria-hidden="true">
+        <Icon name="terminal" className="w-10 h-10 text-cyan-400" />
     </div>
 
-    <h3 class="text-2xl font-bold text-white mb-3 font-['Space_Grotesk'] tracking-tight group-hover:text-cyan-400 transition-colors">
+    <h3 class="text-2xl font-bold text-white mb-3 font-['Nunito'] tracking-tight group-hover:text-cyan-400 transition-colors">
         {title}
     </h3>
     
-    <p class="text-slate-400 text-sm mb-8 leading-relaxed font-['Inter'] line-clamp-3">
+    <p class="text-slate-400 text-sm mb-auto leading-relaxed font-['Nunito'] min-h-[4.5rem]">
         {desc}
     </p>
 
-    <div class="flex items-center gap-6 mt-auto">
-        <a href={github} target="_blank" class="flex items-center gap-2 text-[10px] font-black text-slate-500 hover:text-cyan-400 tracking-[0.2em] transition-colors uppercase">
-            <span class="material-symbols-outlined text-lg">code</span>
-            Source_Code
+    <div class="flex items-center gap-4 pt-6 mt-4 border-t border-white/5">
+        <a href={github} 
+           target="_blank" 
+           rel="noopener noreferrer"
+           class="flex items-center gap-2 text-[10px] font-black text-slate-500 hover:text-cyan-400 tracking-[0.2em] transition-colors uppercase rounded focus:outline-none focus:text-cyan-400 focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-[#0c1326] px-2 py-1"
+           aria-label={`View source code for ${title} on GitHub`}>
+            <span aria-hidden="true"><Icon name="code" className="w-4 h-4" /></span>
+            Source
         </a>
 
-        <a href={demo} target="_blank" class="relative inline-flex items-center justify-center px-6 py-2.5 overflow-hidden font-bold text-white transition duration-300 ease-out border-2 border-cyan-400 rounded-lg group/btn shadow-md">
-            <span class="absolute inset-0 flex items-center justify-center w-full h-full text-[#070d1f] duration-300 -translate-x-full bg-cyan-400 group-hover/btn:translate-x-0 ease">
-                <span class="material-symbols-outlined">rocket_launch</span>
-            </span>
-            <span class="absolute flex items-center justify-center w-full h-full text-cyan-400 transition-all duration-300 transform group-hover/btn:translate-x-full ease font-['Space_Grotesk'] text-xs uppercase tracking-widest">
-                Live_Demo
-            </span>
-            <span class="relative invisible">Live_Demo</span>
+        <a href={demo} 
+           target="_blank" 
+           rel="noopener noreferrer"
+           class="flex-1 text-center px-4 py-2 font-bold text-xs text-cyan-400 border border-cyan-400/30 hover:bg-cyan-400 hover:text-[#070d1f] rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-[#0c1326]"
+           aria-label={`View live demo of ${title}`}>
+            Demo
         </a>
     </div>
-</div>
-
-<style>
-    div {
-        backdrop-filter: blur(8px);
-    }
-</style>
+</article>
