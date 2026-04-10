@@ -1,46 +1,75 @@
-# Astro Starter Kit: Basics
+# Portfolio
 
-```sh
-npm create astro@latest -- --template basics
+My personal portfolio website showcasing my projects, skills, and contact information.
+
+## Tech Stack
+
+- **Framework:** [Astro](https://astro.build) - Static site generator
+- **Styling:** [Tailwind CSS](https://tailwindcss.com) - Utility-first CSS framework
+- **Interactivity:** [Alpine.js](https://alpinejs.dev) - Lightweight JavaScript framework
+- **Icons:** Material Symbols (Google Fonts)
+- **Fonts:** Space Grotesk & Inter (Google Fonts)
+- **Deployment:** Vercel
+
+## Features
+
+- Responsive design with mobile sidebar navigation
+- SEO optimized with meta tags, Open Graph, and Twitter Cards
+- XML sitemap for search engines
+- Structured data (JSON-LD) for rich search results
+- Schema.org markup for Person, WebSite, and CreativeWork
+- Contact section with email copy functionality
+- Project showcase with live demos and GitHub links
+- Skills showcase with interactive tags
+
+## Pages
+
+- **Home** - Hero section with animated elements
+- **Skills** - Technology stack showcase
+- **Projects** - Portfolio projects with links
+- **Contact** - Contact information and social links
+
+## Getting Started
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Project Structure
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
+```
 /
 ├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
+│   ├── favicon.svg
+│   ├── og-image.svg
+│   └── robots.txt
+├── src/
+│   ├── components/
+│   │   ├── Navbar.astro
+│   │   ├── ProjectCard.astro
+│   │   └── Contact.astro
+│   ├── layouts/
+│   │   └── Layout.astro
+│   ├── pages/
+│   │   └── index.astro
+│   └── styles/
+│       └── global.css
+├── astro.config.mjs
 └── package.json
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## SEO
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- Sitemap: `/sitemap-index.xml`
+- Robots: `/robots.txt`
+- Structured data for search engines
